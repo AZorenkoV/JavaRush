@@ -1,0 +1,28 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven / Gradle
+target/
+out/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Class files
+*.class
+
+# User-specific files
+*.iws
+*.ipr
+
+# VS Code (на всяк випадок)
+.vscode/
+
+# Backup files
+*~
