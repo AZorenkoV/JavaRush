@@ -1,0 +1,69 @@
+package ua.javarush.task.task14.task1416;
+
+/* 
+Стій, хто пливе?
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        CanSwim creature = new Orca();
+        creature.swim();
+        creature = new Whale();
+        creature.swim();
+        creature = new RiverOtter();
+        creature.swim();
+    }
+
+    public static void test(CanSwim creature) {
+        creature.swim();
+    }
+
+    interface CanWalk {
+        void walk();
+    }
+
+    interface CanSwim {
+        void swim();
+    }
+
+    static abstract class SeaCreature implements CanSwim{
+        public void swim() {
+            SeaCreature currentCreature = (SeaCreature) getCurrentCreature();
+            currentCreature.displaySwim();
+        }
+
+        private void displaySwim() {
+            System.out.println(getCurrentCreature().getClass().getSimpleName() + " is swimming");
+        }
+
+        abstract CanSwim getCurrentCreature();
+    }
+
+    static class Orca extends SeaCreature {
+        @Override
+        CanSwim getCurrentCreature() {
+            return this;
+        }
+    }
+
+    static class Whale extends SeaCreature{
+
+        @Override
+        CanSwim getCurrentCreature() {
+            return this;
+        }
+    }
+
+    static class RiverOtter implements CanSwim, CanWalk{
+
+        @Override
+        public void swim() {
+            this.swim();
+        }
+
+        @Override
+        public void walk() {
+            this.walk();
+        }
+    }
+}
