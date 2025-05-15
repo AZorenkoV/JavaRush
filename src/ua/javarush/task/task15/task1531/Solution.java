@@ -23,6 +23,7 @@ public class Solution {
     public static String factorial(int n) {
         //напишіть тут ваш код
         if(n < 0) return "0";
+        //BigInteger
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= n; i++)
             result = result.multiply(BigInteger.valueOf(i));
