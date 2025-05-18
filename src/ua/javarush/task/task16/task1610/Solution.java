@@ -11,6 +11,11 @@ public class Solution {
     }
 
     private static void investigateWorld() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -29,6 +34,8 @@ public class Solution {
             System.out.println(getName() + " народила 2 кошенят");
             try {
                 initAllKittens();
+                kitten1.join();
+                kitten2.join();
             } catch (InterruptedException e) {
             }
             System.out.println(getName() + ": Усі кошенята в кошику. " + getName() + " зібрала їх назад");
