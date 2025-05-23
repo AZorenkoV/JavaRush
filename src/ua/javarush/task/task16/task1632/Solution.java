@@ -24,7 +24,6 @@ public class Solution {
 
     public static void main(String[] args) {
 
-
     }
 
     public static class  Thread1 extends Thread{
@@ -62,10 +61,16 @@ public class Solution {
     }
 
     public static class Thread4 extends Thread implements Message{
+        @Override
+        public void run() {
+            while (!isInterrupted()){
+
+            }
+        }
 
         @Override
         public void showWarning() {
-            Thread.currentThread().interrupt();
+            this.interrupt();
         }
     }
 
@@ -75,15 +80,15 @@ public class Solution {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input = null;
             int sum = 0;
-            do {
+            while (true){
                 try {
                     input = reader.readLine();
-                    sum += Integer.getInteger(input);
+                    if(input.equals("N")) break;
+                    sum += Integer.parseInt(input);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
-                } catch (NumberFormatException e) {
                 }
-            } while (!input.equals("N"));
+            }
             System.out.println(sum);
         }
     }
