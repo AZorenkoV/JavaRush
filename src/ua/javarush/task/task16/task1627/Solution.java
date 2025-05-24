@@ -53,6 +53,19 @@ public class Solution {
         @Override
         public void run() {
             //напишіть тут ваш код
+            for (int i = 0; i < 4; i++) {
+                System.out.println(this.getName() + ":" + OnlineGame.steps.get(i));
+                try {
+                    Thread.sleep(1000 / rating);
+                } catch (InterruptedException e) {
+                    System.out.println(this.getName() + ":програв");
+                    break;
+                }
+            }
+            if(!OnlineGame.isWinnerFound) {
+                    OnlineGame.isWinnerFound = true;
+                    System.out.println(this.getName() + ":переможець!");
+            }
         }
     }
 }
