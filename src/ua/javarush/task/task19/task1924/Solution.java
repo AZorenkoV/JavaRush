@@ -26,9 +26,37 @@ public class Solution {
         map.put(7, "сім");
         map.put(8, "вісім");
         map.put(9, "дев'ять");
+        map.put(10, "десять");
+        map.put(11, "одинадцять");
+        map.put(12, "дванадцять");
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        String fileName;
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = br.readLine();
+        }
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            while (br.ready()) {
+                for (String word : br.readLine().split( " ")) {
+                    char symbol = 0;
+                    if(word.endsWith(".")) {
+                        word = word.substring(0, word.length()-1);
+                        symbol = '.';
+                    }
+                    if(word.endsWith(",")) {
+                        word = word.substring(0, word.length()-1);
+                        symbol = ',';
+                    }
+                    try {
+                        if(map.containsKey(Integer.valueOf(word))) System.out.print(map.get(Integer.valueOf(word)) + (symbol != 0 ? symbol : "") + " ");
+                        else System.out.print(word + (symbol != 0 ? symbol : "") + " ");
+                    } catch (NumberFormatException e) {
+                        System.out.print(word + (symbol != 0 ? symbol : "") + " ");
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
 }
